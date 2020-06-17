@@ -299,9 +299,9 @@ func (smart *SMARTctl) mineNvmeSmartHealthInformationLog() {
 		smart.device.serial,
 	)
 	smart.ch <- prometheus.MustNewConstMetric(
-			metricMediaErrors,
+			metricPercentageUsed,
 			prometheus.GaugeValue,
-			iHealth.Get("percentage_used").Int(),
+			iHealth.Get("percentage_used").Float(),
 			smart.device.device,
 			smart.device.family,
 			smart.device.model,

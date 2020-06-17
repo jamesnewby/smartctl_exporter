@@ -199,6 +199,17 @@ var (
 		},
 		nil,
 	)
+	metricPercentageUsed = prometheus.NewDesc(
+			"percentage_used",
+			"Percentage Used",
+			[]string{
+				"device",
+				"model_family",
+				"model_name",
+				"serial_number",
+			},
+			nil,
+		)
 	metricSmartStatus = prometheus.NewDesc(
 		"smart_status",
 		"Smart status",
