@@ -167,7 +167,7 @@ var (
 		nil,
 	)
 	metricCriticalWarning = prometheus.NewDesc(
-		"critical_warning",
+		"smartctl_device_critical_warning",
 		"Critical warning counter",
 		[]string{
 			"device",
@@ -178,7 +178,7 @@ var (
 		nil,
 	)
 	metricAvailableSpare = prometheus.NewDesc(
-		"available_spare",
+		"smartctl_device_available_spare",
 		"Available spare",
 		[]string{
 			"device",
@@ -189,7 +189,7 @@ var (
 		nil,
 	)
 	metricMediaErrors = prometheus.NewDesc(
-		"media_errors",
+		"smartctl_device_media_errors",
 		"Media errors counter",
 		[]string{
 			"device",
@@ -200,7 +200,7 @@ var (
 		nil,
 	)
 	metricPercentageUsed = prometheus.NewDesc(
-			"percentage_used",
+			"smartctl_device_percentage_used",
 			"Percentage Used",
 			[]string{
 				"device",
@@ -211,7 +211,7 @@ var (
 			nil,
 		)
 	metricSmartStatus = prometheus.NewDesc(
-		"smart_status",
+		"smartctl_device_smart_status",
 		"Smart status",
 		[]string{
 			"device",
