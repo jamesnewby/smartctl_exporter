@@ -271,7 +271,7 @@ func (smart *SMARTctl) mineLongFlags(json gjson.Result, flags []string) string {
 
 func (smart *SMARTctl) mineNvmeSmartHealthInformationLog() {
 	iHealth := smart.json.Get("nvme_smart_health_information_log")
-	if (iHealth == nil) {
+	if (!iHealth.Exists()) {
 		return
 	}
 	smart.ch <- prometheus.MustNewConstMetric(
