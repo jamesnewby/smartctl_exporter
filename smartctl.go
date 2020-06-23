@@ -51,7 +51,7 @@ func (smart *SMARTctl) Collect() {
 	smart.minePowerCycleCount()
 	smart.mineDeviceStatistics()
 	smart.mineNvmeSmartHealthInformationLog()
-	smart.mineNvmeSmartStatus()
+	smart.mineSmartStatus()
 }
 
 func (smart *SMARTctl) mineExitStatus() {
@@ -271,6 +271,9 @@ func (smart *SMARTctl) mineLongFlags(json gjson.Result, flags []string) string {
 
 func (smart *SMARTctl) mineNvmeSmartHealthInformationLog() {
 	iHealth := smart.json.Get("nvme_smart_health_information_log")
+	if (iHealth == nil) {
+		return
+	}
 	smart.ch <- prometheus.MustNewConstMetric(
 		metricCriticalWarning,
 		prometheus.GaugeValue,
@@ -309,7 +312,7 @@ func (smart *SMARTctl) mineNvmeSmartHealthInformationLog() {
 		)
 }
 
-func (smart *SMARTctl) mineNvmeSmartStatus() {
+func (smart *SMARTctl) mineSmartStatus() {
 	iStatus := smart.json.Get("smart_status")
 	smart.ch <- prometheus.MustNewConstMetric(
 		metricSmartStatus,
